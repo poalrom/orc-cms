@@ -1,0 +1,20 @@
+<?php
+return [
+    'id'               => 'ID',
+    'title'            => 'Заголовок',
+    'lang_id'          => 'Язык',
+    'meta_title'       => 'SEO заголовок',
+    'meta_keywords'    => 'Ключевые слова',
+    'meta_description' => 'SEO описание',
+    'description'      => 'Описание',
+    'content'          => 'Контент',
+    'parent_id'        => 'Родительская страница',
+    'preview'          => 'Превью',
+    'alias'            => 'Алиас',
+    'template'         => 'Шаблон',
+    'is_active'        => 'Включено',
+    'items_per_page'   => 'Дочерних элементов на страницу',
+    'created_at'       => 'Дата создания',
+    'updated_at'       => 'Дата обновления',
+    'order'            => 'Порядковый номер',
+];

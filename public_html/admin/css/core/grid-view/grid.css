@@ -1,0 +1,4 @@
+.grid-view .table > tbody > tr > td,
+.grid-view .table > thead > tr > th{
+    vertical-align: middle;
+}

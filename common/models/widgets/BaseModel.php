@@ -1,6 +1,6 @@
 <?php
 
-namespace common\widgets\models;
+namespace common\models\widgets;
 
 use common\models\core\ar\EntityModel;
 

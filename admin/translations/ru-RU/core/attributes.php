@@ -30,4 +30,7 @@ return [
     'parent'         => 'Родительский пункт',
     'css_class'      => 'Стиль',
     'shortcode'      => 'Код виджета',
+    'http_status'    => 'HTTP статус',
+    'from'           => 'Откуда',
+    'to'             => 'Куда',
 ];

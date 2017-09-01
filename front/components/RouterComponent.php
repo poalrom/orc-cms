@@ -2,7 +2,7 @@
 
 namespace front\components;
 
-//use app\models\router\Redirect;
+use common\models\core\ar\Redirect;
 use common\components\LanguageComponent;
 use common\models\core\ar\Route;
 use Yii;
@@ -29,13 +29,13 @@ class RouterComponent extends UrlManager
         if (!$this->enableStrictParsing && preg_match('#^/webshell(.*)$#', $request->url) == 1) {
             return parent::parseRequest($request);
         }
-        /** TODO: Insert redirects to standard module */
         // If route was exists in redirector, then redirect
-        /*$redirect = Redirect::find()->where(['from' => $request->url])->one();
+        /** @var Redirect $redirect */
+        $redirect = Redirect::find()->where(['from' => $request->url])->one();
         if ($redirect) {
-            Yii::$app->response->redirect($redirect->to, 301)->send();
+            Yii::$app->response->redirect($redirect->to, $redirect->status)->send();
             exit();
-        }*/
+        }
         $parts = explode('/', $request->getPathInfo());
         // If first part is default language - throw 404 error
         if ($parts[0] == LanguageComponent::getCurrent()->url) {

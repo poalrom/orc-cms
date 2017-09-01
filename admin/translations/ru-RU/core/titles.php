@@ -17,4 +17,7 @@ return [
     'menu_item'        => 'Пункт меню',
     'create_menu_item' => 'Создать пункт меню',
     'update_menu_item' => 'Изменить пункт меню',
+    'redirects'        => 'Редиректы',
+    'create_redirect'  => 'Создать редирект',
+    'update_redirect'  => 'Обновить редирект',
 ];

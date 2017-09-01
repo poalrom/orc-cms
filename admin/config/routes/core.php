@@ -21,4 +21,7 @@ return [
 
     // File
     'admin/file/<action>' => \admin\controllers\core\FileController::FILE_ROUTE,
+
+    // Redirects
+    'admin/redirects/<action>' => \admin\controllers\core\RedirectsController::REDIRECT_ROUTE,
 ];

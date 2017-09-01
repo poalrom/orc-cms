@@ -84,7 +84,7 @@ class RouterComponent extends UrlManager
         }
         $model = $route->item;
         // Check route using entity model
-        if (Yii::$app->params['route'][0] === '') {
+        if (count(Yii::$app->params['route']) === 0 || Yii::$app->params['route'][0] === '') {
             $isTrueLink = $model->checkUrl('');
         } else {
             $isTrueLink = $model->checkUrl(implode(DIRECTORY_SEPARATOR, Yii::$app->params['route']));

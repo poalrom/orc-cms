@@ -91,7 +91,7 @@ class PageTranslation extends ActiveRecord implements EntityTranslationInterface
      */
     public function isEmpty()
     {
-        return empty($this->content) && empty($this->description);
+        return empty($this->content) && empty($this->description) && !$this->lang->is_default;
     }
 
     /**

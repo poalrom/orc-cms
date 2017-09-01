@@ -22,19 +22,21 @@ foreach ($allLanguages as $language) {
 }
 ?>
 
-<div class="lang-switcher">
-    <?php foreach ($enabledLanguages as $i => $language): ?>
-        <?php if ($i !== 0): ?>
-            &nbsp;/&nbsp;
-        <?php endif ?>
-        <?php if ($language->isCurrent()): ?>
-            <?= $language->title ?>
-        <?php else: ?>
-            <a href="<?= $language->is_default ? '' : '/' . $language->url ?>/<?= implode('/',
-                Yii::$app->params['route']) ?>">
+<?php if (count($enabledLanguages) > 1): ?>
+    <div class="lang-switcher">
+        <?php foreach ($enabledLanguages as $i => $language): ?>
+            <?php if ($i !== 0): ?>
+                &nbsp;/&nbsp;
+            <?php endif ?>
+            <?php if ($language->isCurrent()): ?>
                 <?= $language->title ?>
-            </a>
-        <?php endif ?>
-    <?php endforeach ?>
+            <?php else: ?>
+                <a href="<?= $language->is_default ? '' : '/' . $language->url ?>/<?= implode('/',
+                    Yii::$app->params['route']) ?>">
+                    <?= $language->title ?>
+                </a>
+            <?php endif ?>
+        <?php endforeach ?>
 
-</div>
+    </div>
+<?php endif ?>

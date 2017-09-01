@@ -20,6 +20,7 @@ class m170805_221346_create_lang_table extends Migration
             'url'        => $this->string(255)->notNull(),
             'local'      => $this->string(255)->notNull(),
             'title'      => $this->string(255)->notNull(),
+            'icon'       => $this->string(255)->notNull(),
             'is_default' => $this->boolean(),
         ]);
 

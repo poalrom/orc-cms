@@ -2240,6 +2240,10 @@ button,
 .lang-switcher {
   margin-bottom: 1em;
   text-align: center; }
+  .lang-switcher a {
+    opacity: .4; }
+    .lang-switcher a:hover, .lang-switcher a:focus, .lang-switcher a:active {
+      opacity: 1; }
 
 /* Wrapper */
 #wrapper {

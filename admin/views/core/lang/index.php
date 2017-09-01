@@ -60,7 +60,9 @@ $this->params['breadcrumbs'][] = $this->title;
                     'class' => 'action-column',
                 ],
             ],
-
+            GridHelper::centeredColumn('icon', function($model){
+                return "<span class='flag-icon flag-icon-{$model->icon}'></span>";
+            }, 'raw'),
             [
                 'class'          => ActionColumn::class,
                 'visibleButtons' => [

@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "admin-lte": "^2.3.11",
+    "flag-icon-css": "^2.8.0",
     "font-awesome": "^4.7.0",
     "gulp": "^3.9.1",
     "gulp-sass": "^3.1.0",

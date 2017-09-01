@@ -1,4 +1,14 @@
 .lang-switcher{
   margin-bottom: 1em;
   text-align: center;
+
+  a{
+    opacity: .4;
+
+    &:hover,
+    &:focus,
+    &:active{
+      opacity: 1;
+    }
+  }
 }

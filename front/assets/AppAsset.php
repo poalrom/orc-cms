@@ -2,6 +2,7 @@
 
 namespace front\assets;
 
+use common\assets\FlagCssAsset;
 use common\assets\FontAwesomeAsset;
 use yii\web\AssetBundle;
 use yii\web\JqueryAsset;
@@ -25,6 +26,7 @@ class AppAsset extends AssetBundle
 
     public $depends = [
         JqueryAsset::class,
-        FontAwesomeAsset::class
+        FontAwesomeAsset::class,
+        FlagCssAsset::class,
     ];
 }

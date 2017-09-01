@@ -20,8 +20,10 @@ use common\models\core\ar\Menu;
 
     <!-- Footer -->
     <footer id="footer">
-        <?= $this->render('_lang_switcher') ?>
-        <p class="copyright">&copy; <?= date('Y') ?>.</p>
+        <p class="copyright">
+            &copy; Powered by <a href="https://github.com/poalrom/orc-cms">ORC.CMS</a>
+            <?= date('Y') ?>
+        </p>
     </footer>
 
 </div>

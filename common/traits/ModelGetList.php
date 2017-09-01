@@ -15,7 +15,7 @@ trait ModelGetList
     /**
      * @var string Value column for model list
      */
-    protected static $listTitle = 'translation.title';
+    protected static $listTitle = 'currentTranslation.title';
 
     /**
      * Getting list of models filtered by conditions
@@ -30,8 +30,8 @@ trait ModelGetList
             throw new \DomainException(static::class . " must be instance of ActiveRecord");
         }
 
-        if (method_exists(static::class, 'getTranslation')) {
-            $models = static::find()->where($conditions)->joinWith('translation')->all();
+        if (method_exists(static::class, 'getCurrentTranslation')) {
+            $models = static::find()->where($conditions)->joinWith('currentTranslation')->all();
         } else {
             $models = static::findAll($conditions);
         }

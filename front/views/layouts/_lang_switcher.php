@@ -10,33 +10,27 @@ $showAllLanguages = false;
 if (!($this->entity instanceof TranslatableEntityInterface)) {
     $showAllLanguages = true;
 }
-$allLanguages = LanguageComponent::getAll();
-$enabledLanguages = [];
-foreach ($allLanguages as $language) {
-    if (
-        $showAllLanguages ||
-        (isset($this->entity->translations[$language->id]) && !$this->entity->translations[$language->id]->isEmpty())
-    ) {
-        array_push($enabledLanguages, $language);
-    }
-}
+$languages = LanguageComponent::getAll();
 ?>
-
-<?php if (count($enabledLanguages) > 1): ?>
-    <ul class="icons lang-switcher">
-        <?php foreach ($enabledLanguages as $i => $language): ?>
-            <?php if ($language->isCurrent()): ?>
-                <li class="lang_selected">
+<ul class="icons lang-switcher">
+    <?php foreach ($languages as $language): ?>
+        <?php if (!$showAllLanguages &&
+            (
+                $language->isCurrent() ||
+                !isset($this->entity->translations[$language->id]) ||
+                $this->entity->translations[$language->id]->isEmpty()
+            )
+        ): ?>
+            <li class="<?= $language->isCurrent() ? 'lang_current' : 'lang_inactive' ?>">
+                <span class="flag-icon flag-icon-<?= $language->icon ?>"></span>
+            </li>
+        <?php else: ?>
+            <li>
+                <a href="<?= $language->is_default ? '' : '/' . $language->url ?>/<?= implode('/',
+                    Yii::$app->params['route']) ?>">
                     <span class="flag-icon flag-icon-<?= $language->icon ?>"></span>
-                </li>
-            <?php else: ?>
-                <li>
-                    <a href="<?= $language->is_default ? '' : '/' . $language->url ?>/<?= implode('/',
-                        Yii::$app->params['route']) ?>">
-                        <span class="flag-icon flag-icon-<?= $language->icon ?>"></span>
-                    </a>
-                </li>
-            <?php endif ?>
-        <?php endforeach ?>
-    </ul>
-<?php endif ?>
+                </a>
+            </li>
+        <?php endif ?>
+    <?php endforeach ?>
+</ul>

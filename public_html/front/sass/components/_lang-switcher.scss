@@ -3,12 +3,18 @@
   text-align: center;
 
   a{
-    opacity: .4;
+    opacity: .6;
+    border-bottom: 0;
 
     &:hover,
     &:focus,
     &:active{
       opacity: 1;
     }
+  }
+
+  .lang_inactive{
+    opacity: .2;
+    cursor: not-allowed;
   }
 }

@@ -10,11 +10,11 @@
   "license": "ISC",
   "dependencies": {
     "admin-lte": "^2.3.11",
+    "alertifyjs": "^1.11.0",
     "flag-icon-css": "^2.8.0",
     "font-awesome": "^4.7.0",
     "gulp": "^3.9.1",
     "gulp-sass": "^3.1.0",
-    "js-cookie": "^2.1.4",
-    "notifyjs-browser": "^0.4.2"
+    "js-cookie": "^2.1.4"
   }
 }

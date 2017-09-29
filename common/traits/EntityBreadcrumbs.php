@@ -1,4 +1,5 @@
 <?php
+
 namespace common\traits;
 
 /**
@@ -10,16 +11,16 @@ trait EntityBreadcrumbs
 {
     /**
      * Collecting breadcrumbs. If there is root entity, then return false. Else get full link and chained parents of
-     * entity. Parent's getLink method isn't used, because there is too many requests to DB.
+     * entity. Parent's getUrl method isn't used, because there is too many requests to DB.
      *
      * @return array Array of breadcrumbs for standard Yii2 breadcrumbs widget.
      */
     public function getBreadcrumbs()
     {
-        if (!method_exists($this, 'getLink')) {
+        if (!method_exists($this, 'getUrl')) {
             return [];
         }
-        $link = $this->getLink();
+        $link = $this->getUrl();
         if ($link == '' || $link == '/') {
             return [];
         }
@@ -32,15 +33,15 @@ trait EntityBreadcrumbs
                     $urlArray = array_slice($tree, 0, $i);
                     $breadcrumbs[] = [
                         'label' => $item->item->translation->title,
-                        'url'   => implode('/', $urlArray),
+                        'url' => implode('/', $urlArray),
                     ];
                 } else {
                     $breadcrumbs[] = $item->item->translation->title;
                 }
             }
         }
-        if (method_exists($this, 'getTranslation') || property_exists($this, 'translation')) {
-            $breadcrumbs[] = $this->translation->title;
+        if (method_exists($this, 'getCurrentTranslation') || property_exists($this, 'currentTranslation')) {
+            $breadcrumbs[] = $this->currentTranslation->title;
         } else {
             $breadcrumbs[] = $this->title;
         }

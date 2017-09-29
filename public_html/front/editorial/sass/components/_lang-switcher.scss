@@ -1,0 +1,20 @@
+.lang-switcher{
+  margin-bottom: 1em;
+  text-align: center;
+
+  a{
+    opacity: .6;
+    border-bottom: 0;
+
+    &:hover,
+    &:focus,
+    &:active{
+      opacity: 1;
+    }
+  }
+
+  .lang_inactive{
+    opacity: .2;
+    cursor: not-allowed;
+  }
+}

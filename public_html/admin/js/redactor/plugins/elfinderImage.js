@@ -1,6 +1,6 @@
 if (!RedactorPlugins) var RedactorPlugins = {};
 
-(function ($, elFinder) {
+(function ($, elFinder, RedactorPlugins) {
     RedactorPlugins.elfinderImage = function () {
         return {
             init: function () {
@@ -26,4 +26,4 @@ if (!RedactorPlugins) var RedactorPlugins = {};
             }
         };
     };
-})(jQuery, mihaildev.elFinder);
+})(jQuery, mihaildev.elFinder, RedactorPlugins);

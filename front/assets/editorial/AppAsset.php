@@ -1,6 +1,6 @@
 <?php
 
-namespace front\assets;
+namespace front\assets\editorial;
 
 use common\assets\FlagCssAsset;
 use common\assets\FontAwesomeAsset;
@@ -12,8 +12,8 @@ use yii\web\JqueryAsset;
  */
 class AppAsset extends AssetBundle
 {
-    public $basePath = '@webroot/front';
-    public $baseUrl = '@web/front';
+    public $basePath = '@webroot/front/editorial';
+    public $baseUrl = '@web/front/editorial';
 
     public $css = [
         'css/main.css',

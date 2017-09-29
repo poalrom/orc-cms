@@ -30,7 +30,7 @@ use yii\widgets\ActiveForm;
         <div class="col-sm-12 col-lg-4">
             <?= $form->field($link, 'parent_id')->dropDownList([
                     Yii::t('core/prompts', 'without_parent'),
-                ] + $link->menu->getLinkList($link->lang_id, $link->id)
+                ] + $menu->getLinkList($link->lang_id, $link->id)
             ) ?>
         </div>
         <div class="col-sm-12 col-lg-4">

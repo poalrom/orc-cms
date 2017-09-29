@@ -1,14 +1,11 @@
-var gulp = require('gulp');
-var sass = require('gulp-sass');
+const requireDir = require('require-dir'),
+    tasks = requireDir('./gulp_tasks');
 
-gulp.task('sass', function(){
-    return gulp.src('public_html/front/sass/main.scss')
-        .pipe(sass())
-        .pipe(gulp.dest('public_html/front/css'))
-});
-
-gulp.task('sass:watch', function () {
-    gulp.watch('public_html/front/sass/**/*.scss', ['sass']);
-});
-
-gulp.task('default', [ 'sass:watch' ]);
+for (let task in tasks){
+    if (!tasks.hasOwnProperty(task)){
+        continue;
+    }
+    if (typeof tasks[task] === 'function'){
+        tasks[task]();
+    }
+}

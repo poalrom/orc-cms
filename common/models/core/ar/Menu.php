@@ -77,9 +77,9 @@ class Menu extends EntityModel
             $this->hasMany(MenuLink::className(), ['menu_id' => 'id'])
                 ->alias('menuLink')
                 ->where([
-                    'lang_id' => $lang_id,
+                    'menuLink.lang_id' => $lang_id,
                 ])
-                ->andWhere(['!=', 'menuLink.id', $exclude_link_id])
+                ->andWhere(['!=', 'menuLink.id', intval($exclude_link_id)])
                 ->orderBy('order')
                 ->all(),
             'id',

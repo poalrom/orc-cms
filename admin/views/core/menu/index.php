@@ -45,11 +45,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 'visibleButtons' => [
                     'update' => function ($model, $key, $index) {
                         /** @var \common\models\core\ar\Menu $model */
-                        return $model->alias === Menu::MAIN_MENU_ALIAS;
+                        return $model->alias !== Menu::MAIN_MENU_ALIAS;
                     },
                     'delete' => function ($model, $key, $index) {
                         /** @var \common\models\core\ar\Menu $model */
-                        return $model->alias === Menu::MAIN_MENU_ALIAS;
+                        return $model->alias !== Menu::MAIN_MENU_ALIAS;
                     },
                 ],
                 'contentOptions' => [

@@ -1,4 +1,5 @@
 <?php
+
 namespace admin\controllers\core;
 
 use admin\controllers\BaseController;
@@ -28,7 +29,7 @@ class MenuLinkController extends BaseController
     public function permissions()
     {
         return [
-            'index'  => 'menuItem.seeList',
+            'index' => 'menuItem.seeList',
             'create' => 'menuItem.create',
             'update' => 'menuItem.update',
             'delete' => 'menuItem.delete',
@@ -51,6 +52,7 @@ class MenuLinkController extends BaseController
             }
             if (Yii::$app->request->isAjax) {
                 Yii::$app->response->format = Response::FORMAT_JSON;
+
                 return [
                     'orders' => ArrayHelper::map(
                         MenuLink::find()->where(['id' => array_keys($menuLinks)])->all(),
@@ -58,7 +60,7 @@ class MenuLinkController extends BaseController
                         'order'
                     ),
                     'type' => 'success',
-                    'message' => Yii::t('core/messages', 'order_save_successfully')
+                    'message' => Yii::t('core/messages', 'order_save_successfully'),
                 ];
             }
         }
@@ -68,12 +70,13 @@ class MenuLinkController extends BaseController
         foreach ($languages as $language) {
             $searchModel = new MenuLinkSearch();
             $links[$language->id]['searchModel'] = $searchModel;
-            $links[$language->id]['dataProvider'] = $searchModel->search(Yii::$app->request->get(), $language->id, $menu->id);
+            $links[$language->id]['dataProvider'] = $searchModel->search(Yii::$app->request->get(), $language->id,
+                $menu->id);
         }
 
         return $this->render('index', [
-            'menu'      => $menu,
-            'links'     => $links,
+            'menu' => $menu,
+            'links' => $links,
             'languages' => $languages,
         ]);
     }
@@ -89,6 +92,7 @@ class MenuLinkController extends BaseController
      */
     public function actionCreate($lang_id, $menu_id)
     {
+        $menu = Menu::findOrFail($menu_id);
         $link = new MenuLink([
             'lang_id' => $lang_id,
             'menu_id' => $menu_id,
@@ -98,6 +102,7 @@ class MenuLinkController extends BaseController
         } else {
             return $this->render('create', [
                 'link' => $link,
+                'menu' => $menu,
             ]);
         }
     }
@@ -113,11 +118,13 @@ class MenuLinkController extends BaseController
     public function actionUpdate($id)
     {
         $link = MenuLink::findOrFail($id);
+        $menu = $link->menu;
         if ($link->load(Yii::$app->request->post()) && $link->save()) {
             return $this->redirect(['index', 'id' => $link->menu_id]);
         } else {
             return $this->render('update', [
                 'link' => $link,
+                'menu' => $menu,
             ]);
         }
     }
@@ -137,5 +144,5 @@ class MenuLinkController extends BaseController
 
         return $this->redirect(['index', 'id' => $link->menu_id]);
     }
-    
+
 }

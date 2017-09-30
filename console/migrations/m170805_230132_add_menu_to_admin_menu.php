@@ -20,7 +20,7 @@ class m170805_230132_add_menu_to_admin_menu extends Migration
 
     public function safeDown()
     {
-        AdminMenuItem::deleteAll(['route' => 'pages/page/index']);
+        AdminMenuItem::deleteAll(['route' => 'core/menu/index']);
     }
 
 }

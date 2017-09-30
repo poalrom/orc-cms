@@ -20,4 +20,5 @@ return [
     'redirects'        => 'Редиректы',
     'create_redirect'  => 'Создать редирект',
     'update_redirect'  => 'Обновить редирект',
+    'file_manager'     => 'Менеджер файлов',
 ];

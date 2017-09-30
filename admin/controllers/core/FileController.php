@@ -18,6 +18,8 @@ use yii\web\Controller;
 class FileController extends PathController
 {
 
+    const ADMIN_FILE_ROUTE = 'core/file';
+
     public $root = [
         'path' => 'uploads',
         'name' => 'Uploads'

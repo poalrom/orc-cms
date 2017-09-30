@@ -5,3 +5,6 @@
 .grid-view .table > tbody > tr > td,
 .grid-view .table > thead > tr > th {
   vertical-align: middle; }
+
+.file-manager__full-screen {
+  height: 700px; }

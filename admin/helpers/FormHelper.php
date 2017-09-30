@@ -2,6 +2,7 @@
 
 namespace admin\helpers;
 
+use admin\controllers\core\FileController;
 use common\components\LanguageComponent;
 use mihaildev\elfinder\ElFinder;
 use Yii;
@@ -27,7 +28,7 @@ class FormHelper extends Component
     {
         $defaultLang = LanguageComponent::getDefault();
 
-        return ElFinder::ckeditorOptions('admin/file', [
+        return ElFinder::ckeditorOptions(FileController::ADMIN_FILE_ROUTE, [
             'rows' => 20,
             'lang' => $defaultLang->url,
         ]);

@@ -3,9 +3,9 @@
 namespace admin\assets\core;
 
 use common\assets\AdminLteAsset;
+use common\assets\AlertifyJsAsset;
 use common\assets\FlagCssAsset;
 use common\assets\JsCookieAsset;
-use common\assets\AlertifyJsAsset;
 use yii\bootstrap\BootstrapAsset;
 use yii\bootstrap\BootstrapPluginAsset;
 use yii\web\YiiAsset;
@@ -36,5 +36,6 @@ class CoreAsset extends BaseAsset
         AdminLteAsset::class,
         JsCookieAsset::class,
         AlertifyJsAsset::class,
+        FlagCssAsset::class,
     ];
 }

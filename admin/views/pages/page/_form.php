@@ -10,9 +10,9 @@
 use admin\helpers\FileHelper;
 use admin\helpers\FormHelper;
 use common\models\pages\Page;
+use dosamigos\ckeditor\CKEditor;
 use mihaildev\elfinder\InputFile;
 use yii\widgets\ActiveForm;
-use dosamigos\ckeditor\CKEditor;
 
 ?>
 <div class="page-form">
@@ -86,7 +86,7 @@ use dosamigos\ckeditor\CKEditor;
         <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
             <?= $form->field($page, 'preview')->widget(InputFile::class, [
                 'language'      => 'ru',
-                'controller'    => 'admin/file',
+                'controller'    => \admin\controllers\core\FileController::ADMIN_FILE_ROUTE,
                 'buttonName'    => Yii::t('core/buttons', 'browse'),
                 'filter'        => 'image',
                 'template'      => '<div class="input-group">{input}<span class="input-group-btn">{button}</span></div>',

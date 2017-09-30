@@ -18,6 +18,8 @@ class MainController extends BaseController
      */
     const MAIN_PAGE_ROUTE = 'core/main/index';
 
+    const FILE_MANAGER_ROUTE = 'core/main/file-manager';
+
     /**
      * Route to error admin panel page
      */
@@ -39,6 +41,11 @@ class MainController extends BaseController
     public function actionIndex()
     {
         return $this->render('index');
+    }
+
+    public function actionFileManager()
+    {
+        return $this->render('file-manager');
     }
 
 }

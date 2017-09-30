@@ -19,7 +19,11 @@ class FileHelper extends \yii\helpers\FileHelper
      */
     public static function getTemplates($catalog)
     {
-        $dir = \Yii::getAlias('@front') . DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR . $catalog;
+        $theme = \Yii::$app->params['theme'];
+        $dir = \Yii::getAlias('@front') . DIRECTORY_SEPARATOR .
+            'views' . DIRECTORY_SEPARATOR .
+            $theme . DIRECTORY_SEPARATOR .
+            $catalog;
         $list = [];
         if (is_dir($dir)) {
             foreach (glob($dir . '/*') as $file) {

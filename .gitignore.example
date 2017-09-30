@@ -1,0 +1,70 @@
+# yii console commands
+/yii
+/yii_test
+/yii_test.bat
+
+# phpstorm project files
+.idea
+
+# netbeans project files
+nbproject
+
+# zend studio for eclipse project files
+.buildpath
+.project
+.settings
+
+# windows thumbnail cache
+Thumbs.db
+
+# composer vendor dir
+/vendor
+
+# composer vendor dir
+/node_modules
+
+# composer itself is not needed
+composer.phar
+
+# Mac DS_Store Files
+.DS_Store
+
+# phpunit itself is not needed
+phpunit.phar
+# local phpunit config
+/phpunit.xml
+
+# vagrant runtime
+/.vagrant
+.gitignore
+
+# default gulp task
+gulp_tasks/default.js
+
+## Widget files
+/admin/assets/widgets/*
+/admin/config/routes/widgets.*
+/admin/controllers/widgets/*
+!/admin/controllers/widgets/BaseController.php
+/admin/translations/ru-RU/widgets/*
+/admin/views/widgets/*
+/common/models/widgets/*
+!/common/models/widgets/BaseModel.php
+/front/controllers/widgets/*
+!/front/controllers/widgets/BaseController.php
+/public_html/admin/widgets/*
+
+
+## Public files
+
+# Generated files
+/public_html/index.php
+/public_html/index-test.php
+/public_html/robots.txt
+
+# Project upload folder
+/public_html/uploads/*
+
+# Admin main sass and css
+/public_html/admin/css/main.css
+/public_html/admin/sass/main.sass

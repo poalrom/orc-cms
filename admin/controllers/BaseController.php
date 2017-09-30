@@ -27,11 +27,11 @@ abstract class BaseController extends Controller
      * <code>
      *   [
      *     'login' => false,
-     *     'logout' => 'useAdminPanel'
+     *     'logout' => AdminAuthManager::USE_ADMIN_PANEL_PERMISSION
      *   ]
      * </code>
      * If action key set to false, all users can go to this action.
-     * If action key isn't exist, use default permission 'useAdminPanel'.
+     * If action key isn't exist, use default permission [[AdminAuthManager::USE_ADMIN_PANEL_PERMISSION]].
      *
      * @return array
      */

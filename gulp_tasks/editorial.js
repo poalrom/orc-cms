@@ -4,12 +4,12 @@ module.exports = function () {
         sass = require('gulp-sass');
 
     gulp.task(theme + '-sass', function () {
-        return gulp.src('public_html/front/editorial/sass/main.scss')
+        return gulp.src('public_html/front/' + theme + '/sass/main.scss')
             .pipe(sass())
-            .pipe(gulp.dest('public_html/front/editorial/css'))
+            .pipe(gulp.dest('public_html/front/' + theme + '/css'))
     });
 
-    gulp.task(theme + '-sass:watch', function () {
-        gulp.watch('public_html/front/editorial/sass/**/*.scss', [theme + '-sass']);
+    gulp.task(theme + ':watch', function () {
+        gulp.watch('public_html/front/' + theme + '/sass/**/*.scss', [theme + '-sass']);
     });
 };

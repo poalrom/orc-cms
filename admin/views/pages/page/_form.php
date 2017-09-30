@@ -11,8 +11,8 @@ use admin\helpers\FileHelper;
 use admin\helpers\FormHelper;
 use common\models\pages\Page;
 use mihaildev\elfinder\InputFile;
-use yii\redactor\widgets\Redactor;
 use yii\widgets\ActiveForm;
+use dosamigos\ckeditor\CKEditor;
 
 ?>
 <div class="page-form">
@@ -62,9 +62,10 @@ use yii\widgets\ActiveForm;
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <?= $form->field($translations[$language->id],
-                                '[' . $language->id . ']content')->widget(Redactor::class, [
-                                'clientOptions' => FormHelper::getRedactorSettings($this),
-                            ]) ?>
+                                '[' . $language->id . ']content')->widget(CKEditor::class, [
+                                    'clientOptions' => FormHelper::getCKEditorSettings(),
+                                ]
+                            ) ?>
                         </div>
                     </div>
                 </div>

@@ -2,10 +2,13 @@
 
 namespace common\traits;
 
+use common\interfaces\core\EntityTranslationInterface;
+
 /**
  * Trait for create entity breadcrumbs.
  *
  * @package common\traits
+ * @mixin \yii\base\Object
  */
 trait EntityBreadcrumbs
 {
@@ -27,25 +30,44 @@ trait EntityBreadcrumbs
         $tree = explode('/', $link);
         $i = 1;
         if (method_exists($this, 'getParentTree')) {
-            foreach ($this->getParentTree() as $item) {
+            foreach ($this->getParentTree() as $route) {
                 $i++;
-                if ($item->is_active) {
+                if ($route->is_active) {
                     $urlArray = array_slice($tree, 0, $i);
                     $breadcrumbs[] = [
-                        'label' => $item->item->translation->title,
+                        'label' => $this->getItemTitle($route->item),
                         'url' => implode('/', $urlArray),
                     ];
                 } else {
-                    $breadcrumbs[] = $item->item->translation->title;
+                    $breadcrumbs[] = $this->getItemTitle($route->item);
                 }
             }
         }
-        if (method_exists($this, 'getCurrentTranslation') || property_exists($this, 'currentTranslation')) {
-            $breadcrumbs[] = $this->currentTranslation->title;
-        } else {
-            $breadcrumbs[] = $this->title;
-        }
+        $breadcrumbs[] = $this->getItemTitle($this);
 
         return $breadcrumbs;
+    }
+
+    /**
+     * Get title from object. Item can include translation or title property
+     *
+     * @param \yii\base\Object $item
+     *
+     * @return string
+     */
+    private function getItemTitle($item)
+    {
+        if (
+        (
+            method_exists($item, 'getCurrentTranslation') ||
+            property_exists($item, 'currentTranslation')
+        ) && $item->currentTranslation instanceof EntityTranslationInterface
+        ) {
+            return $item->currentTranslation->title;
+        } elseif (method_exists($item, 'getTitle') || property_exists($item, 'title')) {
+            return $item->title;
+        }
+
+        return '';
     }
 }

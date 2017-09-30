@@ -2,6 +2,7 @@
 
 namespace admin\controllers\core;
 
+use admin\components\AdminAuthManager;
 use admin\controllers\BaseController;
 use admin\models\core\forms\LoginForm;
 use Yii;
@@ -41,6 +42,7 @@ class LoginController extends BaseController
     {
         return [
             'index' => false,
+            'forbidden' => false,
         ];
     }
 
@@ -49,7 +51,7 @@ class LoginController extends BaseController
      */
     public function actionIndex()
     {
-        if (Yii::$app->user->can('useAdminPanel')) {
+        if (Yii::$app->user->can(AdminAuthManager::USE_ADMIN_PANEL_PERMISSION)) {
             return Yii::$app->response->redirect(Url::toRoute(MainController::MAIN_PAGE_ROUTE));
         }
         $model = new LoginForm();

@@ -55,7 +55,12 @@ $this->params['activeRoute'] = 'core/menu/index';
                         'columns'      => [
                             ['class' => SerialColumn::class],
                             GridHelper::headerCenteredColumn('title'),
-                            GridHelper::headerCenteredColumn('link'),
+                            GridHelper::headerCenteredColumn('link', function ($model) {
+                                /** @var \common\models\core\ar\MenuLink $model */
+                                return Html::a($model->link, \yii\helpers\Url::to($model->link, true), [
+                                        'target' => '_blank'
+                                ]);
+                            }, 'raw'),
                             [
                                 'label'         => Yii::t('core/attributes', 'parent'),
                                 'attribute'     => 'parent.title',

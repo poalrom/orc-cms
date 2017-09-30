@@ -18,14 +18,7 @@ use yii\web\YiiAsset;
 class CoreAsset extends BaseAsset
 {
     public $css = [
-        'css/core/grid-view/grid.css',
-        'css/core/grid-view/action-column.css',
-        /*'http://fonts.googleapis.com/css?family=Roboto:400,700,300',
-        'css/font-awesome.min.css',
-        'css/admin/AdminLTE.min.css',
-        'css/admin/skin-green-light.min.css',
-        'css/admin/admin.css',
-        'js/fancybox/jquery.fancybox.css',*/
+        'css/main.css',
     ];
 
     public $js = [
@@ -34,13 +27,6 @@ class CoreAsset extends BaseAsset
         'js/core/sidebar.js',
         'js/core/notification.js',
         'js/core/translationTabs.js',
-        /*'js/cookies.js',
-        'js/clipboard.js',
-        'js/tinymce/tinymce.min.js',
-        'js/fancybox/jquery.fancybox.pack.js',
-        'js/admin/app.js',
-        'js/admin/bootstrap-notify.min.js',
-        'js/admin/admin.js',*/
     ];
 
     public $depends = [
@@ -50,6 +36,5 @@ class CoreAsset extends BaseAsset
         AdminLteAsset::class,
         JsCookieAsset::class,
         AlertifyJsAsset::class,
-        FlagCssAsset::class,
     ];
 }

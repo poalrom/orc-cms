@@ -1,0 +1,27 @@
+.breadcrumbs{
+  ul{
+    margin: 0;
+    padding: 0;
+  }
+  &__item{
+    display: inline-block;
+    padding: 0;
+    list-style: none;
+    margin-right: 35px;
+    position: relative;
+    &:after{
+      content: '\f054';
+      font-family: FontAwesome;
+      font-weight: normal;
+      font-style: normal;
+      display: block;
+      position: absolute;
+      right: -22px;
+      line-height: 24px;
+      top: 2px;
+    }
+    &:last-of-type:after{
+      display: none;
+    }
+  }
+}

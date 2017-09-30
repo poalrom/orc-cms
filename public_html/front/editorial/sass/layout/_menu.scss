@@ -6,93 +6,99 @@
 
 /* Menu */
 
-	#menu {
-		ul {
-			@include vendor('user-select', 'none');
-			color: _palette(fg-bold);
-			font-family: _font(family-heading);
-			font-family: _font(weight-heading-alt);
-			letter-spacing: _font(kerning-heading);
-			list-style: none;
-			margin-bottom: 0;
-			padding: 0;
-			text-transform: uppercase;
+#menu {
+  ul {
+    @include vendor('user-select', 'none');
+    color: _palette(fg-bold);
+    font-family: _font(family-heading);
+    font-family: _font(weight-heading-alt);
+    letter-spacing: _font(kerning-heading);
+    list-style: none;
+    margin-bottom: 0;
+    padding: 0;
+    text-transform: uppercase;
 
-			a, span {
-				border-bottom: 0;
-				color: inherit;
-				cursor: pointer;
-				display: block;
-				font-size: 0.9em;
-				padding: 0.625em 0;
+    li {
+      &.active{
+        color: _palette(accent);
+      }
+    }
 
-				&:hover {
-					color: _palette(accent);
-				}
+    a, span {
+      border-bottom: 0;
+      color: inherit;
+      cursor: pointer;
+      display: block;
+      font-size: 0.9em;
+      padding: 0.625em 0;
 
-				&.opener {
-					@include vendor('transition', 'color #{_duration(transition)} ease-in-out');
-					@include icon;
-					-webkit-tap-highlight-color: rgba(255,255,255,0);
-					position: relative;
+      &:hover {
+        color: _palette(accent);
+      }
 
-					&:before {
-						@include vendor('transition', (
-							'color #{_duration(transition)} ease-in-out',
-							'transform #{_duration(transition)} ease-in-out'
-						));
-						color: _palette(fg-light);
-						content: '\f078';
-						position: absolute;
-						right: 0;
-					}
+      &.opener {
+        @include vendor('transition', 'color #{_duration(transition)} ease-in-out');
+        @include icon;
+        -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+        position: relative;
 
-					&:hover {
-						&:before {
-							color: _palette(accent);
-						}
-					}
+        &:before {
+          @include vendor('transition', (
+                  'color #{_duration(transition)} ease-in-out',
+                  'transform #{_duration(transition)} ease-in-out'
+          ));
+          color: _palette(fg-light);
+          content: '\f078';
+          position: absolute;
+          right: 0;
+        }
 
-					&.active {
-						& + ul {
-							display: block;
-						}
+        &:hover {
+          &:before {
+            color: _palette(accent);
+          }
+        }
 
-						&:before {
-							@include vendor('transform', 'rotate(-180deg)');
-						}
-					}
-				}
-			}
-		}
+        &.active {
+          & + ul {
+            display: block;
+          }
 
-		> ul {
-			> li {
-				border-top: solid 1px _palette(border);
-				margin: 0.5em 0 0 0;
-				padding: 0.5em 0 0 0;
+          &:before {
+            @include vendor('transform', 'rotate(-180deg)');
+          }
+        }
+      }
+    }
+  }
 
-				> ul {
-					color: _palette(fg-light);
-					display: none;
-					margin: 0.5em 0 1.5em 0;
-					padding-left: 1em;
+  > ul {
+    > li {
+      border-top: solid 1px _palette(border);
+      margin: 0.5em 0 0 0;
+      padding: 0.5em 0 0 0;
 
-					a, span {
-						font-size: 0.8em;
-					}
+      > ul {
+        color: _palette(fg);
+        display: none;
+        margin: 0.5em 0 1.5em 0;
+        padding-left: 1em;
 
-					> li {
-						margin: 0.125em 0 0 0;
-						padding: 0.125em 0 0 0;
-					}
-				}
+        a, span {
+          font-size: 0.8em;
+        }
 
-				&:first-child {
-					border-top: 0;
-					margin-top: 0;
-					padding-top: 0;
-				}
-			}
-		}
-	}
+        > li {
+          margin: 0.125em 0 0 0;
+          padding: 0.125em 0 0 0;
+        }
+      }
+
+      &:first-child {
+        border-top: 0;
+        margin-top: 0;
+        padding-top: 0;
+      }
+    }
+  }
+}

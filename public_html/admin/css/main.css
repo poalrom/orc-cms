@@ -1,0 +1,7 @@
+.action-column {
+  text-align: center;
+  font-size: 20px; }
+
+.grid-view .table > tbody > tr > td,
+.grid-view .table > thead > tr > th {
+  vertical-align: middle; }

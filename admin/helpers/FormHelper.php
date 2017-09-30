@@ -2,14 +2,12 @@
 
 namespace admin\helpers;
 
-use admin\assets\core\RedactorAdminAsset;
 use common\components\LanguageComponent;
+use mihaildev\elfinder\ElFinder;
 use Yii;
 use yii\base\Component;
-use yii\base\Model;
 use yii\db\ActiveRecord;
 use yii\helpers\Html;
-use yii\helpers\Url;
 use yii\widgets\ActiveForm;
 
 /**
@@ -23,33 +21,22 @@ class FormHelper extends Component
     /**
      * Register redactor plugin assets and return settings for redactor
      *
-     * @param \yii\web\View $view
-     *
      * @return array
      */
-    public static function getRedactorSettings($view)
+    public static function getCKEditorSettings()
     {
         $defaultLang = LanguageComponent::getDefault();
-        RedactorAdminAsset::register($view);
 
-        return [
-            'minHeight'        => 600,
-            'lang'             => $defaultLang->url,
-            'plugins'          => ['elfinderImage'],
-            'elfinderImageUrl' => Url::to([
-                'admin/file/manager',
-                'filter'   => 'image',
-                'callback' => 'load-redactor-image',
-                'lang'     => $defaultLang->url,
-            ]),
-            "buttonsHide"      => ['image', 'file'],
-        ];
+        return ElFinder::ckeditorOptions('admin/file', [
+            'rows' => 20,
+            'lang' => $defaultLang->url,
+        ]);
     }
 
     /**
      * Submit button
      *
-     * @param $model Model Main form model
+     * @param $model ActiveRecord Main form model
      *
      * @return string
      */

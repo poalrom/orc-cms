@@ -9,7 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "admin-lte": "^2.3.11",
+    "admin-lte": "^2.4.0",
     "alertifyjs": "^1.11.0",
     "flag-icon-css": "^2.8.0",
     "font-awesome": "^4.7.0",

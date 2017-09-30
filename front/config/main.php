@@ -51,7 +51,14 @@ return [
         ],
         'view'         => [
             'class' => \front\views\View::class,
-        ],
+            'theme' => [
+                'basePath' => '@app/views/' . $params['theme'],
+                'baseUrl' => '@web/front/' . $params['theme'],
+                'pathMap' => [
+                    '@app/views' => '@app/views/' . $params['theme'],
+                ],
+            ],
+        ]
     ],
     'params' => $params,
 ];

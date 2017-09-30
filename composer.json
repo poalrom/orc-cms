@@ -17,7 +17,8 @@
         "yiisoft/yii2-swiftmailer": "~2.0.0",
         "mihaildev/yii2-elfinder": "*",
         "kartik-v/yii2-widget-select2": "@dev",
-        "2amigos/yii2-ckeditor-widget": "^2.1"
+        "2amigos/yii2-ckeditor-widget": "^2.1",
+        "himiklab/yii2-easy-thumbnail-image-helper": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

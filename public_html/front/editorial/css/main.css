@@ -1299,6 +1299,8 @@ a {
     color: #2980b9 !important; }
     a:hover strong {
       color: inherit; }
+  a.no-link {
+    border: none; }
 
 strong, b {
   color: #3d4449;

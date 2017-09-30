@@ -35,7 +35,8 @@ abstract class BaseController
      */
     public static function getAlias($shortcode)
     {
-        return preg_match('/(.*)alias="([^"]*)".*/', $shortcode, $alias) === 1 ? $alias : false;
+        return preg_match('/(.*)alias="([^"]*)".*/', static::normalizeShortcode($shortcode), $alias) === 1
+            ? $alias : false;
     }
 
     /**
@@ -47,7 +48,20 @@ abstract class BaseController
      */
     public static function getParams($shortcode)
     {
-        return preg_match("/(.*)params='([^']*)'(.*)/", $shortcode, $params) === 1 ? json_decode($params[2]) : false;
+        return preg_match("/(.*)params='([^']*)'(.*)/", static::normalizeShortcode($shortcode), $params) === 1
+            ? json_decode($params[2]) : false;
+    }
+
+    /**
+     * Normalize shortcode
+     *
+     * @param string $shortcode
+     *
+     * @return string
+     */
+    private static function normalizeShortcode($shortcode)
+    {
+        return html_entity_decode($shortcode);
     }
 
 }

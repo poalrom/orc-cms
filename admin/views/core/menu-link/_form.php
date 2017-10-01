@@ -37,7 +37,7 @@ use yii\widgets\ActiveForm;
             <?= $form->field($link, 'css_class')->textInput(['maxlength' => true]) ?>
         </div>
         <div class="col-sm-12 col-lg-3">
-            <?= $form->field($link, 'target')->dropDownList($link->getLinkTargets()) ?>
+            <?= $form->field($link, 'target')->dropDownList(MenuLink::getLinkTargets()) ?>
         </div>
     </div>
 

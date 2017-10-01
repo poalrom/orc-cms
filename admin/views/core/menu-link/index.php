@@ -8,6 +8,7 @@
 
 use admin\assets\core\SaveAllAsset;
 use admin\helpers\GridHelper;
+use common\models\core\ar\MenuLink;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
 use yii\grid\SerialColumn;
@@ -58,7 +59,7 @@ $this->params['activeRoute'] = 'core/menu/index';
                             GridHelper::headerCenteredColumn('link', function ($model) {
                                 /** @var \common\models\core\ar\MenuLink $model */
                                 return Html::a($model->link, \yii\helpers\Url::to($model->link, true), [
-                                        'target' => '_blank'
+                                    'target' => '_blank',
                                 ]);
                             }, 'raw'),
                             [
@@ -86,6 +87,20 @@ $this->params['activeRoute'] = 'core/menu/index';
                                 ],
                                 'filter'        => Html::a(Yii::t('core/buttons', 'save'), '#',
                                     ['class' => 'save-all btn btn-success btn-block']),
+                            ],
+                            [
+                                'attribute'     => 'target',
+                                'value'         => function ($model) {
+                                    /** @var MenuLink $model */
+                                    return $model->getTargetDescription();
+                                },
+                                'headerOptions' => [
+                                    'class' => 'text-center',
+                                ],
+                                'filter'        => Html::dropDownList('MenuLinkSearch[target]',
+                                    $links[$language->id]['searchModel']->target,
+                                    MenuLink::getLinkTargets(),
+                                    ['prompt' => Yii::t('core/prompts', 'all'), 'class' => 'form-control']),
                             ],
                             [
                                 'class'          => ActionColumn::class,

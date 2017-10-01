@@ -119,11 +119,16 @@ class MenuLink extends EntityModel
         return $this->hasOne(Lang::className(), ['id' => 'lang_id']);
     }
 
-    public function getLinkTargets()
+    public static function getLinkTargets()
     {
         return [
             '_self'  => Yii::t('core/attributes', 'current_tab'),
             '_blank' => Yii::t('core/attributes', 'new_tab'),
         ];
+    }
+
+    public function getTargetDescription()
+    {
+        return static::getLinkTargets()[$this->target];
     }
 }

@@ -8,3 +8,6 @@
 
 .file-manager__full-screen {
   height: 700px; }
+
+.content-wrapper {
+  min-height: calc(100% - 101px); }

@@ -28,7 +28,7 @@ class MenuLinkSearch extends MenuLink
     {
         return [
             [['menu_id', 'parent_id'], 'integer'],
-            [['title', 'link'], 'string', 'max' => 255],
+            [['title', 'link', 'target'], 'string', 'max' => 255],
         ];
     }
 
@@ -62,7 +62,8 @@ class MenuLinkSearch extends MenuLink
         ]);
 
         $query->andFilterWhere(['like', 'menu_link.title', $this->title])
-            ->andFilterWhere(['like', 'menu_link.link', $this->link]);
+            ->andFilterWhere(['like', 'menu_link.link', $this->link])
+            ->andFilterWhere(['like', 'menu_link.target', $this->target]);
 
         return $dataProvider;
     }

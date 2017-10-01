@@ -15,6 +15,7 @@ use Yii;
  * @property int        $order Sort order
  * @property int        $parent_id Parent item ID
  * @property string     $css_class CSS class
+ * @property string     $target Target link attribute
  * @property Menu       $menu Menu AR model
  * @property MenuLink   $parent Parent item AR model
  * @property MenuLink[] $children Child AR models
@@ -41,6 +42,7 @@ class MenuLink extends EntityModel
         return [
             [['menu_id', 'lang_id', 'order', 'parent_id'], 'integer'],
             [['title', 'link', 'css_class'], 'string', 'max' => 255],
+            ['target', 'in', 'range' => ['_blank', '_self']],
             [
                 ['menu_id'],
                 'exist',
@@ -73,6 +75,7 @@ class MenuLink extends EntityModel
             'parent_id' => Yii::t('core/attributes', 'parent_id'),
             'parent'    => Yii::t('core/attributes', 'parent'),
             'css_class' => Yii::t('core/attributes', 'css_class'),
+            'target'    => Yii::t('core/attributes', 'target'),
         ];
     }
 
@@ -114,5 +117,13 @@ class MenuLink extends EntityModel
     public function getLang()
     {
         return $this->hasOne(Lang::className(), ['id' => 'lang_id']);
+    }
+
+    public function getLinkTargets()
+    {
+        return [
+            '_self'  => Yii::t('core/attributes', 'current_tab'),
+            '_blank' => Yii::t('core/attributes', 'new_tab'),
+        ];
     }
 }

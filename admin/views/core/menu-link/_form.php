@@ -24,17 +24,20 @@ use yii\widgets\ActiveForm;
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-12 col-lg-4">
+        <div class="col-sm-12 col-lg-3">
             <?= $form->field($link, 'order')->textInput() ?>
         </div>
-        <div class="col-sm-12 col-lg-4">
+        <div class="col-sm-12 col-lg-3">
             <?= $form->field($link, 'parent_id')->dropDownList([
                     Yii::t('core/prompts', 'without_parent'),
                 ] + $menu->getLinkList($link->lang_id, $link->id)
             ) ?>
         </div>
-        <div class="col-sm-12 col-lg-4">
+        <div class="col-sm-12 col-lg-3">
             <?= $form->field($link, 'css_class')->textInput(['maxlength' => true]) ?>
+        </div>
+        <div class="col-sm-12 col-lg-3">
+            <?= $form->field($link, 'target')->dropDownList($link->getLinkTargets()) ?>
         </div>
     </div>
 

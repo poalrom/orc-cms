@@ -4,7 +4,7 @@ namespace front\views;
 
 use common\components\LanguageComponent;
 use common\models\core\ar\MenuLink;
-use front\helpers\MenuWidgetHelper;
+use front\themes\EditorialTheme;
 use yii\web\View as BaseView;
 
 /**
@@ -39,6 +39,6 @@ class View extends BaseView
             ->andWhere(['m.alias' => $alias])
             ->all();
 
-        return MenuWidgetHelper::menuArrayToItems($menuItems);
+        return EditorialTheme::menuArrayToItems($menuItems);
     }
 }

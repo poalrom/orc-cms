@@ -35,6 +35,7 @@ class m170805_225346_create_menu_tables extends Migration
             'order'     => $this->integer()->defaultValue(0),
             'parent_id' => $this->integer()->defaultValue(0),
             'css_class' => $this->string(255)->defaultValue('common'),
+            'target'    => $this->string(10)->defaultValue('_self'),
         ]);
 
         $this->addForeignKey(

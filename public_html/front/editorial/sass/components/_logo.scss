@@ -1,0 +1,7 @@
+.logo{
+  header.major &-image{
+    padding: 0 0 5px;
+    border-radius: _size(border-radius);
+    display: block;
+  }
+}

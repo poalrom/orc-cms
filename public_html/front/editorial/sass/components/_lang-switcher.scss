@@ -18,4 +18,9 @@
     opacity: .2;
     cursor: not-allowed;
   }
+
+  @include breakpoint(small){
+    @include vendor('flex', '0 0 80px');
+    font-size: 20px;
+  }
 }

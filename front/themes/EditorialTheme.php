@@ -2,6 +2,8 @@
 
 namespace front\themes;
 
+use common\components\LanguageComponent;
+
 /**
  * Helper functions for editorial theme
  *
@@ -27,7 +29,9 @@ class EditorialTheme
         foreach ($menuItems as $menuItem) {
             $childItems = static::menuArrayToItems($menuItem->children, $depth + 1);
             $hasChildren = boolval(count($childItems));
-            $isItemActive = '/' . implode('/', \Yii::$app->params['route']) === $menuItem->link;
+            $url = '/' . implode('/', \Yii::$app->params['route']);
+            $urlWithLang = '/' . LanguageComponent::getCurrent()->url . $url;
+            $isItemActive = $url === $menuItem->link || $urlWithLang === $menuItem->link;
             array_push($menuTree, [
                 'label'    => $menuItem->title,
                 'url'      => $menuItem->link,

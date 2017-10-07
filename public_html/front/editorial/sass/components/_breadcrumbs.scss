@@ -7,7 +7,7 @@
     display: inline-block;
     padding: 0;
     list-style: none;
-    margin-right: 35px;
+    margin-right: 2.7em;
     position: relative;
     &:after{
       content: '\f054';
@@ -16,9 +16,9 @@
       font-style: normal;
       display: block;
       position: absolute;
-      right: -22px;
-      line-height: 24px;
-      top: 2px;
+      right: -1.7em;
+      line-height: 1.8em;
+      top: 0;
     }
     &:last-of-type:after{
       display: none;

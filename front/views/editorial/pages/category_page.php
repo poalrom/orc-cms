@@ -22,32 +22,30 @@ use himiklab\thumbnail\EasyThumbnailImage;
     </div>
     <div class="row">
         <?php foreach ($page->children as $i => $childPage): ?>
-            <?php if ($i % 4 === 0): ?>
-                <div class="row">
-            <?php endif ?>
-            <div class="3u">
+            <?php
+            $normalSize = (($i + 1) % 4 === 0) ? '3u$' : '3u';
+            $smallSize = (($i + 1) % 2 === 0) ? '6u$(small)' : '6u(small)';
+            ?>
+            <div class="<?= $normalSize ?> <?= $smallSize ?> 12u$(xsmall)">
                 <a href="<?= $childPage->getUrl() ?>" class="no-link">
                     <?php if ($childPage->preview): ?>
                         <div class="image">
                             <?= EasyThumbnailImage::thumbnailImg(
                                 '@webroot' . $childPage->preview,
-                                280,
-                                210
+                                426,
+                                320
                             ) ?>
                         </div>
                     <?php else: ?>
                         <div class="image">
-                            <img src="http://via.placeholder.com/280x210?text=Men">
+                            <img src="http://via.placeholder.com/426x320?text=Photo">
                         </div>
                     <?php endif ?>
 
                     <h3 class="align-center"><?= $childPage->currentTranslation->title ?></h3>
-                    <p><?= $childPage->currentTranslation->description ?></p>
+                    <p class="align-center"><?= $childPage->currentTranslation->description ?></p>
                 </a>
             </div>
-            <?php if (($i + 1) % 4 === 0): ?>
-                </div>
-            <?php endif ?>
         <?php endforeach ?>
     </div>
 </section>

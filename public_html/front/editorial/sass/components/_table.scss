@@ -13,7 +13,12 @@
 
 	table {
 		margin: 0 0 _size(element-margin) 0;
+		display: block;
 		width: 100%;
+		overflow-x: auto;
+		-webkit-overflow-scrolling: touch;
+		-ms-overflow-style: -ms-autohiding-scrollbar; // See https://github.com/twbs/bootstrap/pull/10057
+		table-layout:fixed;
 
 		tbody {
 			tr {

@@ -29,8 +29,10 @@ class FormHelper extends Component
         $defaultLang = LanguageComponent::getDefault();
 
         return ElFinder::ckeditorOptions(FileController::ADMIN_FILE_ROUTE, [
-            'rows' => 20,
-            'lang' => $defaultLang->url,
+            'rows'         => 20,
+            'lang'         => $defaultLang->url,
+            'extraPlugins' => 'mathjax',
+            'mathJaxLib'   => '//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML',
         ]);
     }
 

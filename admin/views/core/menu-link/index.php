@@ -9,6 +9,7 @@
 use admin\assets\core\SaveAllAsset;
 use admin\helpers\GridHelper;
 use common\models\core\ar\MenuLink;
+use common\models\core\ar\MenuLinkSearch;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
 use yii\grid\SerialColumn;
@@ -102,6 +103,10 @@ $this->params['activeRoute'] = 'core/menu/index';
                                     MenuLink::getLinkTargets(),
                                     ['prompt' => Yii::t('core/prompts', 'all'), 'class' => 'form-control']),
                             ],
+                            GridHelper::statusColumn(
+                                    MenuLinkSearch::className(),
+                                    $links[$language->id]['searchModel']->is_active
+                            ),
                             [
                                 'class'          => ActionColumn::class,
                                 'visibleButtons' => [

@@ -32,7 +32,8 @@ class View extends BaseView
             ->orderBy('order')
             ->where([
                 'ml.parent_id' => 0,
-                'ml.lang_id' => LanguageComponent::getCurrent()->id
+                'ml.lang_id'   => LanguageComponent::getCurrent()->id,
+                'ml.is_active' => true,
             ])
             ->joinWith('children c')
             ->joinWith('menu m')

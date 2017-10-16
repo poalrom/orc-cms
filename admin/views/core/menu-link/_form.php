@@ -24,8 +24,14 @@ use yii\widgets\ActiveForm;
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-12 col-lg-3">
+        <div class="col-sm-12 col-lg-2">
             <?= $form->field($link, 'order')->textInput() ?>
+        </div>
+        <div class="col-sm-12 col-lg-1">
+            <?= $form->field($link, 'is_active')->dropDownList([
+                Yii::t('core/prompts', 'no'),
+                Yii::t('core/prompts', 'yes'),
+            ]) ?>
         </div>
         <div class="col-sm-12 col-lg-3">
             <?= $form->field($link, 'parent_id')->dropDownList([

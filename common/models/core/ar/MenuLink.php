@@ -16,6 +16,7 @@ use Yii;
  * @property int        $parent_id Parent item ID
  * @property string     $css_class CSS class
  * @property string     $target Target link attribute
+ * @property int        $is_active Is link active
  * @property Menu       $menu Menu AR model
  * @property MenuLink   $parent Parent item AR model
  * @property MenuLink[] $children Child AR models
@@ -57,6 +58,7 @@ class MenuLink extends EntityModel
                 'targetClass'     => Lang::className(),
                 'targetAttribute' => ['lang_id' => 'id'],
             ],
+            [['is_active'], 'boolean'],
         ];
     }
 
@@ -76,6 +78,7 @@ class MenuLink extends EntityModel
             'parent'    => Yii::t('core/attributes', 'parent'),
             'css_class' => Yii::t('core/attributes', 'css_class'),
             'target'    => Yii::t('core/attributes', 'target'),
+            'is_active' => Yii::t('core/attributes', 'is_active'),
         ];
     }
 

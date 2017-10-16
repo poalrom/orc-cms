@@ -28,6 +28,7 @@ class MenuLinkSearch extends MenuLink
     {
         return [
             [['menu_id', 'parent_id'], 'integer'],
+            [['is_active'], 'boolean'],
             [['title', 'link', 'target'], 'string', 'max' => 255],
         ];
     }
@@ -59,6 +60,7 @@ class MenuLinkSearch extends MenuLink
             'menu_link.menu_id'   => $menuID,
             'menu_link.lang_id'   => $langID,
             'menu_link.parent_id' => $this->parent_id,
+            'menu_link.is_active' => $this->is_active,
         ]);
 
         $query->andFilterWhere(['like', 'menu_link.title', $this->title])

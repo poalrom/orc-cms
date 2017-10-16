@@ -2298,6 +2298,16 @@ header.major .logo-image {
   border-radius: 0.375em;
   display: block; }
 
+.gallery img {
+  cursor: pointer; }
+
+.slick-prev, .slick-next {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none; }
+  .slick-prev:before, .slick-next:before {
+    color: #2980b9; }
+
 /* Wrapper */
 #wrapper {
   display: -moz-flex;

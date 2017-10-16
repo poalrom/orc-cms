@@ -1,0 +1,17 @@
+@import "../libs/vars";
+.gallery {
+  img{
+    cursor: pointer;
+  }
+}
+.slick{
+  &-prev,
+  &-next{
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    &:before{
+      color: _palette('accent');
+    }
+  }
+}

@@ -27,7 +27,9 @@ use himiklab\thumbnail\EasyThumbnailImage;
             $smallSize = (($i + 1) % 2 === 0) ? '6u$(small)' : '6u(small)';
             ?>
             <div class="<?= $normalSize ?> <?= $smallSize ?> 12u$(xsmall)">
-                <a href="<?= $childPage->getUrl() ?>" class="no-link">
+                <?php if (!$childPage->currentTranslation->isEmpty()): ?>
+                <a href="<?= $childPage->getUrl(true) ?>" class="no-link">
+                    <?php endif ?>
                     <?php if ($childPage->preview): ?>
                         <div class="image">
                             <?= EasyThumbnailImage::thumbnailImg(
@@ -44,7 +46,9 @@ use himiklab\thumbnail\EasyThumbnailImage;
 
                     <h3 class="align-center"><?= $childPage->currentTranslation->title ?></h3>
                     <p class="align-center"><?= $childPage->currentTranslation->description ?></p>
+                    <?php if (!$childPage->currentTranslation->isEmpty()): ?>
                 </a>
+            <?php endif ?>
             </div>
         <?php endforeach ?>
     </div>

@@ -29,7 +29,7 @@ class MenuLinkController extends BaseController
     public function permissions()
     {
         return [
-            'index' => 'menuItem.seeList',
+            'index'  => 'menuItem.seeList',
             'create' => 'menuItem.create',
             'update' => 'menuItem.update',
             'delete' => 'menuItem.delete',
@@ -54,12 +54,12 @@ class MenuLinkController extends BaseController
                 Yii::$app->response->format = Response::FORMAT_JSON;
 
                 return [
-                    'orders' => ArrayHelper::map(
+                    'orders'  => ArrayHelper::map(
                         MenuLink::find()->where(['id' => array_keys($menuLinks)])->all(),
                         'id',
                         'order'
                     ),
-                    'type' => 'success',
+                    'type'    => 'success',
                     'message' => Yii::t('core/messages', 'order_save_successfully'),
                 ];
             }
@@ -75,8 +75,8 @@ class MenuLinkController extends BaseController
         }
 
         return $this->render('index', [
-            'menu' => $menu,
-            'links' => $links,
+            'menu'      => $menu,
+            'links'     => $links,
             'languages' => $languages,
         ]);
     }
@@ -94,8 +94,9 @@ class MenuLinkController extends BaseController
     {
         $menu = Menu::findOrFail($menu_id);
         $link = new MenuLink([
-            'lang_id' => $lang_id,
-            'menu_id' => $menu_id,
+            'lang_id'   => $lang_id,
+            'menu_id'   => $menu_id,
+            'is_active' => true,
         ]);
         if ($link->load(Yii::$app->request->post()) && $link->save()) {
             return $this->redirect(['index', 'id' => $link->menu_id]);

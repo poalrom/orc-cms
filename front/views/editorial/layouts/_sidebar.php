@@ -6,13 +6,14 @@
 use common\models\core\ar\Menu;
 use himiklab\thumbnail\EasyThumbnailImage;
 use yii\widgets\Menu as MenuWidget;
+use common\components\LanguageComponent;
 
 ?>
 <div class="inner">
     <!-- Menu -->
     <nav id="menu">
         <header class="major image">
-            <a href="/" class="logo-image">
+            <a href="/<?= LanguageComponent::getCurrent()->getUrlPart() ?>" class="logo-image">
                 <?= EasyThumbnailImage::thumbnailImg(
                     '@webroot/uploads/logo.jpg',
                     273,

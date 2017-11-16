@@ -59,8 +59,9 @@ class Menu extends EntityModel
      */
     public function getLinks()
     {
-        return $this->hasMany(MenuLink::className(),
-            ['menu_id' => 'id'])->where(['lang_id' => LanguageComponent::getCurrent()->id])->orderBy('order');
+        return $this->hasMany(MenuLink::className(), ['menu_id' => 'id'])
+            ->where(['lang_id' => LanguageComponent::getCurrent()->id])
+            ->orderBy(['order' => SORT_ASC, 'id' => SORT_ASC]);
     }
 
     /**

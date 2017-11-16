@@ -26,6 +26,14 @@ return [
                 ],
             ],
         ],
+        'i18n'         => [
+            'translations' => [
+                '*' => [
+                    'class'    => \yii\i18n\PhpMessageSource::class,
+                    'basePath' => '@admin/translations',
+                ],
+            ],
+        ],
     ],
     'params'              => $params,
 ];

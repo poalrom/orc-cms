@@ -12,9 +12,11 @@ class m170805_221840_add_ru_lang extends Migration
             'id'         => 1,
             'url'        => 'ru',
             'local'      => 'ru-RU',
-            'title'       => 'Русский',
-            'is_default' => true,
+            'icon'       => 'ru',
+            'title'      => 'Русский',
+            'is_default' => 1,
         ]);
+
         $lang->save();
     }
 

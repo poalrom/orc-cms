@@ -109,7 +109,8 @@ class MenuLink extends EntityModel
      */
     public function getChildren()
     {
-        return $this->hasMany(MenuLink::className(), ['parent_id' => 'id']);
+        return $this->hasMany(MenuLink::className(), ['parent_id' => 'id'])
+            ->orderBy(['order' => SORT_ASC, 'id' => SORT_ASC]);
     }
 
     /**

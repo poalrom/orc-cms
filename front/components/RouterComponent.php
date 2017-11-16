@@ -94,8 +94,8 @@ class RouterComponent extends UrlManager
                 Inflector::variablize($route->module) . '/' . Inflector::variablize($route->controller) . '/' . $route->action,
                 ['model' => $model],
             ];
-        } else {
-            return false;
         }
+
+        return false;
     }
 }

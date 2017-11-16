@@ -3,6 +3,7 @@
 namespace common\models\pages;
 
 use admin\interfaces\core\AdminEntityInterface;
+use common\components\LanguageComponent;
 use common\interfaces\core\TranslatableEntityInterface;
 use common\models\core\ar\EntityModel;
 use common\models\core\ar\Route;
@@ -80,7 +81,7 @@ class Page extends EntityModel implements TranslatableEntityInterface, AdminEnti
             [['template'], 'string', 'max' => 100],
             [['created_at', 'updated_at'], 'safe'],
             [['is_active'], 'boolean'],
-            ['items_per_page', 'default', 'value' => MainModule::DEFAULT_ITEMS_PER_PAGE]
+            ['items_per_page', 'default', 'value' => MainModule::DEFAULT_ITEMS_PER_PAGE],
         ];
     }
 
@@ -117,6 +118,9 @@ class Page extends EntityModel implements TranslatableEntityInterface, AdminEnti
      */
     public function checkUrl($srcLink)
     {
+        if (!$this->is_active) {
+            return false;
+        }
         $fullRoute = $this->getUrl();
 
         return (($fullRoute === $srcLink) || ($fullRoute === '/' . $srcLink)) && !$this->currentTranslation->isEmpty();
@@ -125,7 +129,7 @@ class Page extends EntityModel implements TranslatableEntityInterface, AdminEnti
     /**
      * @inheritdoc
      */
-    public function getUrl()
+    public function getUrl($withLang = false)
     {
         if ($this->route->parent_tree == 0) {
             return '/' . $this->route->alias;
@@ -135,6 +139,10 @@ class Page extends EntityModel implements TranslatableEntityInterface, AdminEnti
         $link = '';
         foreach ($tree as $item) {
             $link .= $tree_routes[$item]->alias . '/';
+        }
+
+        if ($withLang) {
+            $link = LanguageComponent::getCurrent()->getUrlPart() . $link;
         }
 
         return '/' . $link . $this->route->alias;
@@ -301,7 +309,8 @@ MYSQL
      */
     public function getChildren()
     {
-        return $this->hasMany(static::className(), ['parent_id' => 'id'])->orderBy('order DESC');
+        return $this->hasMany(static::className(), ['parent_id' => 'id'])
+            ->orderBy(['order' => SORT_ASC, 'id' => SORT_ASC]);
     }
 
     /**

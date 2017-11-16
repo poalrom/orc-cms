@@ -6,8 +6,8 @@
  */
 
 use common\components\WidgetParser;
-use himiklab\thumbnail\EasyThumbnailImage;
 use front\assets\editorial\GalleryAsset;
+use himiklab\thumbnail\EasyThumbnailImage;
 
 GalleryAsset::register($this);
 ?>
@@ -29,7 +29,9 @@ GalleryAsset::register($this);
             $smallSize = (($i + 1) % 2 === 0) ? '6u$(small)' : '6u(small)';
             ?>
             <div class="<?= $normalSize ?> <?= $smallSize ?> 12u$(xsmall)">
-                <a href="<?= $childPage->getUrl() ?>" class="no-link">
+                <?php if (!$childPage->currentTranslation->isEmpty()): ?>
+                <a href="<?= $childPage->getUrl(true) ?>" class="no-link">
+                    <?php endif ?>
                     <?php if ($childPage->preview): ?>
                         <div class="image">
                             <?= EasyThumbnailImage::thumbnailImg(
@@ -45,7 +47,9 @@ GalleryAsset::register($this);
                     <?php endif ?>
 
                     <h3 class="align-center"><?= $childPage->currentTranslation->title ?></h3>
+                    <?php if (!$childPage->currentTranslation->isEmpty()): ?>
                 </a>
+            <?php endif ?>
             </div>
         <?php endforeach ?>
     </div>

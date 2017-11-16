@@ -3,6 +3,7 @@
 namespace front\views;
 
 use common\components\LanguageComponent;
+use common\models\core\ar\Menu;
 use common\models\core\ar\MenuLink;
 use front\themes\EditorialTheme;
 use yii\web\View as BaseView;
@@ -28,16 +29,13 @@ class View extends BaseView
      */
     public function getMenuItems($alias)
     {
-        $menuItems = MenuLink::find()->alias('ml')
-            ->orderBy('order')
-            ->where([
-                'ml.parent_id' => 0,
-                'ml.lang_id'   => LanguageComponent::getCurrent()->id,
-                'ml.is_active' => true,
-            ])
+        $menu = Menu::findOrFail(['alias' => $alias]);
+        $menuItems = $menu->getLinks()->alias('ml')->where([
+            'ml.parent_id' => 0,
+            'ml.lang_id'   => LanguageComponent::getCurrent()->id,
+            'ml.is_active' => true,
+        ])
             ->joinWith('children c')
-            ->joinWith('menu m')
-            ->andWhere(['m.alias' => $alias])
             ->all();
 
         return EditorialTheme::menuArrayToItems($menuItems);
